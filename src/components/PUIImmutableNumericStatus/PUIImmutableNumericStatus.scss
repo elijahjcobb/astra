@@ -1,0 +1,34 @@
+/**
+ * Elijah Cobb
+ * elijah@elijahcobb.com
+ * elijahcobb.com
+ * github.com/elijahjcobb
+ */
+
+@import "../../__global";
+
+.PUIImmutableNumericStatus {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.label {
+		padding-right: $medium;
+	}
+
+	.value {
+		font-family: $mono;
+		font-weight: bold;
+	}
+
+
+
+	.err {
+		color: $red;
+	}
+
+}
+
+.PUIImmutableNumericStatus:hover {
+	cursor: copy;
+}

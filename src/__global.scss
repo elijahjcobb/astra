@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+$font: 'Roboto', sans-serif;
+$mono: 'Roboto Mono', monospace;
+
+$black: #21252b;
+$background: #282C34;
+$red: #e06c75;
+$green: #98c379;
+$yellow: #e5c07b;
+$blue: #61afef;
+$purple: #c678dd;
+$cyan: #56b6c2;
+$white: #abb2bf;
+$gold: #ffcd00;
+
+$small: 8px;
+$medium: 12px;
+$big: 16px;
