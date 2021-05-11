@@ -7,7 +7,7 @@
 import {ReactElement, useState} from "react";
 import "./TestBed.css";
 import {PUIImmutableNumericStatus} from "./components/PUIImmutableNumericStatus/PUIImmutableNumericStatus";
-import {PUIApp, PUIColor} from "./components/PUIApp";
+import {PUIApp, PUIColor} from "./helpers/PUIApp";
 import {PUIMutableNumericStatus} from "./components/PUIMutableNumericStatus/PUIMutableNumericStatus";
 import {PUIImmutableBinaryStatus} from "./components/PUIImmutableBinaryStatus/PUIImmutableBinaryStatus";
 import {PUISegmentedPicker} from "./components/PUISegmentedPicker/PUISegmentedPicker";

@@ -17,7 +17,9 @@
     "web-vitals": "^1.1.2",
     "@material-ui/core": "latest",
     "@material-ui/icons": "latest",
-    "@material-ui/lab": "latest"
+    "@material-ui/lab": "latest",
+    "events": "latest",
+    "@types/events": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

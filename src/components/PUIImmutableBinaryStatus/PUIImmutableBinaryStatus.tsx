@@ -8,7 +8,7 @@
 import React, {ReactElement, PropsWithChildren} from "react";
 import "./PUIImmutableBinaryStatus.css"
 import {PUICard} from "../PUICard/PUICard";
-import {PUIColor} from "../PUIApp";
+import {PUIColor} from "../../helpers/PUIApp";
 
 export interface PUIImmutableBinaryStatusProps {
 	value: boolean;

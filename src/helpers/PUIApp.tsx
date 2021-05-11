@@ -6,7 +6,7 @@
  */
 
 import React, {ReactElement, PropsWithChildren, useState, createContext} from "react";
-import {PUIToast, PUIToastConfig} from "./PUIToast/PUIToast";
+import {PUIToast, PUIToastConfig} from "../components/PUIToast/PUIToast";
 
 export interface PUIAppProps {
 	className?: string;
