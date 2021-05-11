@@ -18,16 +18,9 @@ export interface PUIPickerProps {
 
 export function PUIPicker(props: PropsWithChildren<PUIPickerProps>): ReactElement {
 
-
-	function handleOnChange(e: ChangeEvent<HTMLSelectElement>): void {
-		let i = props.options.indexOf(e.target.value);
-		if (i === -1) i = 0;
-		props.setValue(i)
-	}
-
 	return (<PUICard className={"PUIPicker"}>
 		<span className={"label"}>{props.label}:</span>
-		<select onChange={handleOnChange} value={props.options[props.value]} className={"picker"}>
+		<select onChange={e => props.setValue(e.target.selectedIndex)} value={props.options[props.value]} className={"picker"}>
 			{
 				props.options.map((v, i) => {
 					return <option value={v} key={i}>{v}</option>
