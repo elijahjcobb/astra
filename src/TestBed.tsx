@@ -12,6 +12,7 @@ import {PUIMutableNumericStatus} from "./components/PUIMutableNumericStatus/PUIM
 import {PUIImmutableBinaryStatus} from "./components/PUIImmutableBinaryStatus/PUIImmutableBinaryStatus";
 import {PUISegmentedPicker} from "./components/PUISegmentedPicker/PUISegmentedPicker";
 import {PUIPicker} from "./components/PUIPicker/PUIPicker";
+import {PUIMutableBinaryStatus} from "./components/PUIMutableBinaryStatus/PUIMutableBinaryStatus";
 
 
 
@@ -19,6 +20,7 @@ export function TestBed(): ReactElement {
 
 	const [value, setValue] = useState(0);
 	const [mode, setMode] = useState(0);
+	const [boo, setBoo] = useState(false);
 	const p = 3;
 
 	return <PUIApp className={"TestBed"}>
@@ -27,19 +29,20 @@ export function TestBed(): ReactElement {
 			setValue(v)
 		}}/>
 		<PUIImmutableNumericStatus label={"Current 1"} precision={p} value={value}/>
-		<PUIImmutableBinaryStatus label={"x > 0"} value={value > 0}/>
 		<PUISegmentedPicker
 			label={"Mode"}
 			options={["A", "B", "C", "D", "E", "F", "G", "H"]}
 			value={mode}
-			setValue={v => setMode(v)}
+			setValue={setMode}
 		/>
 		<PUIPicker
 			label={"Mode"}
 			options={["A", "B", "C", "D", "E", "F", "G", "H"]}
 			value={mode}
-			setValue={v => setMode(v)}
+			setValue={setMode}
 		/>
+		<PUIImmutableBinaryStatus label={"Boo"} value={boo}/>
+		<PUIMutableBinaryStatus label={"Boo"} value={boo} setValue={setBoo}/>
 	</PUIApp>
 
 }

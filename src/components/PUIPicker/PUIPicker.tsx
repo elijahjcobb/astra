@@ -5,9 +5,10 @@
  * github.com/elijahjcobb
  */
 
-import React, {ReactElement, PropsWithChildren, ChangeEvent, useRef} from "react";
+import React, {ReactElement, PropsWithChildren} from "react";
 import "./PUIPicker.css"
 import {PUICard} from "../PUICard/PUICard";
+import {MenuItem, Select} from "@material-ui/core";
 
 export interface PUIPickerProps {
 	label: string;
@@ -20,13 +21,18 @@ export function PUIPicker(props: PropsWithChildren<PUIPickerProps>): ReactElemen
 
 	return (<PUICard className={"PUIPicker"}>
 		<span className={"label"}>{props.label}:</span>
-		<select onChange={e => props.setValue(e.target.selectedIndex)} value={props.options[props.value]} className={"picker"}>
+		<Select
+			value={props.options[props.value]}
+			onChange={v => props.setValue(props.options.indexOf(v.target.value as string))}
+			displayEmpty
+			className={"picker"}
+		>
 			{
 				props.options.map((v, i) => {
-					return <option value={v} key={i}>{v}</option>
+					return <MenuItem key={i} value={v}>{v}</MenuItem>
 				})
 			}
-		</select>
+		</Select>
 	</PUICard>);
 
 }
