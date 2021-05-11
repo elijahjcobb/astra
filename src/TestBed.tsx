@@ -23,7 +23,7 @@ export function TestBed(): ReactElement {
 	const [boo, setBoo] = useState(false);
 
 	const currentRange: [number, number] = [0, 1];
-	const currentPrecision = 3;
+	const currentPrecision = 2;
 
 	return <PUIApp className={"TestBed"}>
 		<PUIMutableNumericStatus label={"Current 1"} range={currentRange} precision={currentPrecision} value={value} setValue={(v) => {
@@ -45,7 +45,7 @@ export function TestBed(): ReactElement {
 		/>
 		<PUIImmutableBinaryStatus label={"Boo"} value={boo}/>
 		<PUIMutableBinaryStatus label={"Boo"} value={boo} setValue={setBoo}/>
-		<PUIGage label={"Current 1"} unit={"A"} value={value} range={currentRange} precision={currentPrecision}/>
+		<PUIGage label={"Current 1"} unit={"amps"} value={value} range={currentRange} precision={currentPrecision}/>
 	</PUIApp>
 
 }

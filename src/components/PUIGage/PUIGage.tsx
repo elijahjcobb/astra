@@ -22,7 +22,21 @@ export interface PUIGageProps {
 export function PUIGage(props: PropsWithChildren<PUIGageProps>): ReactElement {
 
 	const r = 50;
-	const p = (props.value - props.range[0]) / (props.range[1] - props.range[0]);
+
+	let val = props.value;
+	let boundError = false;
+
+	if (val > props.range[1]) {
+		val = props.range[1];
+		boundError = true;
+	}
+
+	if (val < props.range[0]) {
+		val = props.range[0];
+		boundError = true;
+	}
+
+	const p = (val - props.range[0]) / (props.range[1] - props.range[0]);
 	const c = r + 8;
 	const s = r / 12;
 	const container = c * 2;
@@ -31,8 +45,21 @@ export function PUIGage(props: PropsWithChildren<PUIGageProps>): ReactElement {
 	const context = useContext(PUIContext);
 
 	function handleClick(): void {
-		navigator.clipboard.writeText(props.value.toFixed(props.precision ?? 0)).catch(console.error);
+		navigator.clipboard.writeText(getTextValue()).catch(console.error);
 		context.toast({msg: "Copied to Clipboard"})
+	}
+
+	function getTextValue(): string {
+		let v = val;
+		if (boundError) v = props.value;
+		return v.toFixed(props.precision ?? 0);
+	}
+
+	function getColor(): string {
+		if (boundError) {
+			return PUIColor.red
+		}
+		return props.color ?? "white";
 	}
 
 	return (<PUICard onClick={handleClick} className={"PUIGage"}>
@@ -43,8 +70,8 @@ export function PUIGage(props: PropsWithChildren<PUIGageProps>): ReactElement {
 			<div className={"textContainer"}>
 				<span className={"value"} style={{
 					fontSize: r / 1.75,
-					color: props.color ?? "white"
-				}}>{props.value.toFixed(props.precision ?? 0)}</span>
+					color: getColor()
+				}}>{getTextValue()}</span>
 				<span className={"unit"} style={{
 					fontSize: r / 4
 				}}>{props.unit}</span>
@@ -73,7 +100,7 @@ export function PUIGage(props: PropsWithChildren<PUIGageProps>): ReactElement {
 						transform: 'rotate(135deg)',
 						transformOrigin: "50% 50%"
 					}}
-					stroke={props.color ?? "white"}
+					stroke={getColor()}
 					strokeWidth={s}
 					fill="transparent"
 					r={r}
