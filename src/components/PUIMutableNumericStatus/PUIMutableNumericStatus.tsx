@@ -27,22 +27,22 @@ export function PUIMutableNumericStatus(props: PropsWithChildren<PUIMutableNumer
 
 	function handleLeaveFocus(): void {
 		let v = props.precision !== undefined ? parseFloat(fieldValue) : parseInt(fieldValue);
-		let err = false;
+		let err: string | undefined = undefined;
 		if (isNaN(v)) {
 			v = 0;
-			err = true;
+			err = "That value is not a number. Will set to '0'.";
 		}
 		if (props.range) {
 			if (v > props.range[1]) {
-				err = true;
+				err = `That value is too big, the range is "[${props.range[0]}, ${props.range[1]}]".`;
 				v = props.range[1];
 			}
 			if (v < props.range[0]) {
-				err = true;
+				err = `That value is too small, the range is "[${props.range[0]}, ${props.range[1]}]".`;
 				v = props.range[0];
 			}
 		}
-		if (err) context.toast({msg: "Invalid value.", type: PUIToastType.warning})
+		if (err) context.toast({msg: err, type: PUIToastType.warning})
 		if (props.setValue) props.setValue(v)
 		setFieldValue(v.toFixed(props.precision ?? 0))
 	}

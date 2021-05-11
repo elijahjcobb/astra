@@ -1,0 +1,56 @@
+/**
+ * Elijah Cobb
+ * elijah@elijahcobb.com
+ * elijahcobb.com
+ * github.com/elijahjcobb
+ */
+
+@import "../../_global";
+
+.PUIGage {
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	user-select: none;
+
+	.GageView {
+
+		position: relative;
+
+		.textContainer {
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 90%;
+			width: 100%;
+
+			.name {
+				font-weight: lighter;
+			}
+
+			.value {
+				font-weight: bold;
+				margin-top: $medium;
+			}
+
+		}
+
+		.circle {
+			position: absolute;
+			top: 0;
+		}
+
+		circle {
+			transition: all 250ms ease-in-out;
+		}
+
+	}
+
+}
+
+.PUIGage:hover {
+	cursor: copy;
+}
