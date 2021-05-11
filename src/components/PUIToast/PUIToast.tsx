@@ -5,40 +5,54 @@
  * github.com/elijahjcobb
  */
 
-import React, {ReactElement, PropsWithChildren, useState, useEffect, useRef} from "react";
-import "./PUIToast.css";
-import {PUICard} from "../PUICard/PUICard";
+import React, {ReactElement, PropsWithChildren} from "react";
+import {Snackbar} from "@material-ui/core";
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import {PUIColor} from "../PUIApp";
+
+function Alert(props: AlertProps) {
+	return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 
 export interface PUIToastProps {
-	msg: string;
 	duration?: number;
-	onDone: () => void;
+	onClose: () => void;
+	msg?: string;
+	type?: PUIToastType;
+}
+
+export enum PUIToastType {
+	error = "error",
+	warning = "warning",
+	info = "info",
+	success = "success"
+}
+
+export interface PUIToastConfig {
+	duration?: number;
+	msg?: string;
+	type?: PUIToastType;
 }
 
 export function PUIToast(props: PropsWithChildren<PUIToastProps>): ReactElement {
 
-	function handleOnClick(): void {
-		setClasses(classes + " PUIToast-exit")
-		setTimeout(props.onDone, 1000);
-	}
-
-	const [classes, setClasses] = useState("PUIToast");
-
-	const componentIsMounted = useRef(true)
-	useEffect(() => {
-		return () => {
-			componentIsMounted.current = false
+	function getColor(): string {
+		switch (props.type) {
+			case PUIToastType.error:
+				return PUIColor.red;
+			case PUIToastType.success:
+				return PUIColor.green;
+			case PUIToastType.warning:
+				return PUIColor.yellow;
+			default:
+				return PUIColor.blue;
 		}
-	}, [])
-
-	if (props.duration) {
-		setTimeout(() => {
-			if (componentIsMounted) handleOnClick();
-		}, props.duration * 1000)
 	}
 
-	return (<PUICard onClick={handleOnClick} className={classes}>
-		<span>{props.msg}</span>
-	</PUICard>);
+	const d = (props.duration !== undefined) ? (props.duration * 1000) : 6000;
+	return (<Snackbar open={true} autoHideDuration={d} onClose={props.onClose}>
+		<Alert style={{background: getColor(), color: PUIColor.black}} onClose={props.onClose} severity={props.type ?? PUIToastType.info}>{props.msg}</Alert>
+	</Snackbar>);
 
 }

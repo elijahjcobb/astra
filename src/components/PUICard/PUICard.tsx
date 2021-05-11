@@ -5,16 +5,17 @@
  * github.com/elijahjcobb
  */
 
-import React, {ReactElement, PropsWithChildren} from "react";
+import React, {ReactElement, PropsWithChildren, LegacyRef} from "react";
 import "./PUICard.css";
 
 export interface PUICardProps {
 	className?: string;
 	onClick?: () => void;
+	ref?: LegacyRef<HTMLDivElement>;
 }
 
 export function PUICard(props: PropsWithChildren<PUICardProps>): ReactElement {
 
-	return (<div onClick={props.onClick} className={"PUICard" + (props.className ? (" " + props.className) : "")}>{props.children}</div>);
+	return (<div ref={props.ref} onClick={props.onClick} className={"PUICard" + (props.className ? (" " + props.className) : "")}>{props.children}</div>);
 
 }

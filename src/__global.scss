@@ -7,6 +7,8 @@
 	overflow: hidden;
 }
 
+
+
 $font: 'Roboto', sans-serif;
 $mono: 'Roboto Mono', monospace;
 
@@ -24,3 +26,8 @@ $gold: #ffcd00;
 $small: 8px;
 $medium: 12px;
 $big: 16px;
+
+::selection {
+	background: $blue;
+	color: $black;
+}

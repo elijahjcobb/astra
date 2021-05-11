@@ -4,18 +4,42 @@
  * ejcobb@mtu.edu
  */
 
-import {ReactElement} from "react";
+import {ReactElement, useState} from "react";
 import "./TestBed.css";
-import {PUICard} from "./components/PUICard/PUICard";
 import {PUIImmutableNumericStatus} from "./components/PUIImmutableNumericStatus/PUIImmutableNumericStatus";
-import {PUIApp} from "./components/PUIApp/PUIApp";
+import {PUIApp} from "./components/PUIApp";
+import {PUIMutableNumericStatus} from "./components/PUIMutableNumericStatus/PUIMutableNumericStatus";
+import {PUIImmutableBinaryStatus} from "./components/PUIImmutableBinaryStatus/PUIImmutableBinaryStatus";
+import {PUISegmentedPicker} from "./components/PUISegmentedPicker/PUISegmentedPicker";
+import {PUIPicker} from "./components/PUIPicker/PUIPicker";
 
-
-const TEST_ITEM: ReactElement = <PUIImmutableNumericStatus label={"Current 1"} range={[1, 5]} value={1.833398329832983}/>
 
 
 export function TestBed(): ReactElement {
 
-	return <PUIApp>{TEST_ITEM}</PUIApp>
+	const [value, setValue] = useState(0);
+	const [mode, setMode] = useState(0);
+	const p = 3;
+
+	return <PUIApp className={"TestBed"}>
+		<PUIMutableNumericStatus label={"Current 1"} precision={p} value={value} setValue={(v) => {
+			console.log(v)
+			setValue(v)
+		}}/>
+		<PUIImmutableNumericStatus label={"Current 1"} precision={p} value={value}/>
+		<PUIImmutableBinaryStatus label={"x > 0"} value={value > 0}/>
+		<PUISegmentedPicker
+			label={"Mode"}
+			options={["A", "B", "C", "D", "E", "F", "G", "H"]}
+			value={mode}
+			setValue={v => setMode(v)}
+		/>
+		<PUIPicker
+			label={"Mode"}
+			options={["A", "B", "C", "D", "E", "F", "G", "H"]}
+			value={mode}
+			setValue={v => setMode(v)}
+		/>
+	</PUIApp>
 
 }
