@@ -31,7 +31,7 @@ export function PUIImmutableNumericStatus(props: PropsWithChildren<PUIImmutableN
 
 	function handleOnClick(): void {
 		navigator.clipboard.writeText(fixValue()).catch(console.error);
-		PUIApp.shared().toast({msg: "Copied to Clipboard"})
+		PUIApp.toast({msg: "Copied to Clipboard"})
 	}
 
 	return (<PUICard onClick={handleOnClick} className={"PUIImmutableNumericStatus" + (props.className ? (" " + props.className) : "")}>

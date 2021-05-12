@@ -42,11 +42,9 @@ export function PUIGage(props: PropsWithChildren<PUIGageProps>): ReactElement {
 	const container = c * 2;
 	const circumference = r * 2 * Math.PI;
 
-	const context = useContext(PUIContext);
-
 	function handleClick(): void {
 		navigator.clipboard.writeText(getTextValue()).catch(console.error);
-		PUIApp.shared().toast({msg: "Copied to Clipboard"})
+		PUIApp.toast({msg: "Copied to Clipboard"})
 	}
 
 	function getTextValue(): string {

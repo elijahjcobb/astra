@@ -114,7 +114,7 @@ export function PUILog(props: PropsWithChildren<PUILogProps>): ReactElement {
 			<ArrowUpward titleAccess={"scroll to top"} onClick={() => scroll(false)}/>
 			<ArrowDownward titleAccess={"scroll to bottom"} onClick={() => scroll()}/>
 			{autoScroll ? <LocalShipping titleAccess={"disable autoscroll"} onClick={() => setAutoScroll(false)}/> : <LocalShippingOutlined titleAccess={"enable autoscroll"} onClick={() => setAutoScroll(true)}/>}
-			<FileCopy titleAccess={"copy to clipboard"} onClick={() => PUIApp.shared().toast({msg: "Copied log to clipboard."})} />
+			<FileCopy titleAccess={"copy to clipboard"} onClick={() => PUIApp.toast({msg: "Copied log to clipboard."})} />
 			<Delete titleAccess={"clear"} onClick={PUIApp.shared().clearLog} />
 		</div>
 	</PUICard>);

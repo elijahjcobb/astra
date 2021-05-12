@@ -9,6 +9,7 @@ import React, {createContext, ReactElement} from "react";
 import {PUIToast, PUIToastConfig} from "../components/PUIToast/PUIToast";
 import {PUILogItem, PUILogType} from "../components/PUILog/PUILog";
 import {PUIKeyboardController} from "./PUIKeyboardController";
+import {PUIAlert, PUIAlertConfig} from "../components/PUIAlert/PUIAlert";
 
 export interface PUIAppProps {
 	className?: string;
@@ -38,6 +39,7 @@ export enum PUIColor {
 
 interface PUIAppState {
 	toast: PUIToastConfig | undefined;
+	alert: PUIAlertConfig | undefined;
 	log: PUILogItem[];
 }
 
@@ -54,6 +56,7 @@ export class PUIApp extends React.Component<PUIAppProps, PUIAppState> {
 
 		this.state = {
 			toast: undefined,
+			alert: undefined,
 			log: []
 		};
 
@@ -63,12 +66,6 @@ export class PUIApp extends React.Component<PUIAppProps, PUIAppState> {
 
 	public componentDidMount() {
 		PUIApp.singleton = this;
-	}
-
-	public toast(config: PUIToastConfig): void {
-		this.setState({toast: undefined}, () => {
-			this.setState({toast: config})
-		})
 	}
 
 	public log(type: PUILogType, data: any): void {
@@ -100,8 +97,23 @@ export class PUIApp extends React.Component<PUIAppProps, PUIAppState> {
 			<div className={"PUIApp" + (this.props.className ? (" " + this.props.className) : "")}>
 				{this.props.children}
 				{this.state.toast && <PUIToast type={this.state.toast?.type} duration={this.state.toast?.duration} msg={this.state.toast?.msg} onClose={() => this.setState({toast: undefined})}/>}
+				{this.state.alert && <PUIAlert open={true} config={this.state.alert} onClose={() => this.setState({alert: undefined})}/>}
 			</div>
 		</PUIContext.Provider>);
+	}
+
+	public static toast(config: PUIToastConfig): void {
+		const shared = PUIApp.shared();
+		shared.setState({toast: undefined}, () => {
+			shared.setState({toast: config})
+		})
+	}
+
+	public static alert(config: PUIAlertConfig): void {
+		const shared = PUIApp.shared();
+		shared.setState({alert: undefined}, () => {
+			shared.setState({alert: config})
+		})
 	}
 
 	public static shared(): PUIApp {

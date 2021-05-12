@@ -42,7 +42,7 @@ export function PUIMutableNumericStatus(props: PropsWithChildren<PUIMutableNumer
 				v = props.range[0];
 			}
 		}
-		if (err) PUIApp.shared().toast({msg: err, type: PUIToastType.warning})
+		if (err) PUIApp.toast({msg: err, type: PUIToastType.warning})
 		if (props.setValue) props.setValue(v)
 		setFieldValue(v.toFixed(props.precision ?? 0))
 	}
