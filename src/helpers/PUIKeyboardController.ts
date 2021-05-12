@@ -14,10 +14,6 @@ export class PUIKeyboardController {
 	private emitter: EventEmitter;
 	private static singleton: PUIKeyboardController = new PUIKeyboardController();
 
-	private static Class2 = class {
-
-	}
-
 	private constructor() {
 
 		this.emitter = new EventEmitter();

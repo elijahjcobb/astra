@@ -7,16 +7,26 @@
 
 @import "_global";
 
+body {
+	height: 100vh;
+	overflow-y: scroll;
+}
+
 .pstdl, .TestBed {
 
 	background: $black;
 	font-family: $font;
 	color: $white;
+	padding: 100px;
 	width: 100vw;
-	height: 100vh;
+	height: 400vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
+	justify-content: stretch;
 
+}
+
+.TestBed > * {
+	margin-top: $big;
 }

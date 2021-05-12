@@ -12,12 +12,13 @@ export interface PUIAppProps {
 	className?: string;
 }
 
+
 export interface PUIContextProps {
 	toast: (config: PUIToastConfig) => void;
 }
 
 export const PUIContext = createContext<PUIContextProps>({
-	toast: () => {}
+	toast: () => {},
 });
 
 export enum PUIColor {
