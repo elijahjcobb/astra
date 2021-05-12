@@ -8,7 +8,7 @@
 import React, {PropsWithChildren, ReactElement, useContext} from "react";
 import "./PUIImmutableNumericStatus.css";
 import {PUICard} from "../PUICard/PUICard";
-import {PUIContext} from "../../helpers/PUIApp";
+import {PUIApp, PUIContext} from "../../helpers/PUIApp";
 
 export interface PUIImmutableNumericStatusProps {
 	className?: string;
@@ -19,8 +19,6 @@ export interface PUIImmutableNumericStatusProps {
 }
 
 export function PUIImmutableNumericStatus(props: PropsWithChildren<PUIImmutableNumericStatusProps>): ReactElement {
-
-	const context = useContext(PUIContext)
 
 	function isOutOfRange(): boolean {
 		if (!props.range) return false;
@@ -33,7 +31,7 @@ export function PUIImmutableNumericStatus(props: PropsWithChildren<PUIImmutableN
 
 	function handleOnClick(): void {
 		navigator.clipboard.writeText(fixValue()).catch(console.error);
-		context.toast({msg: "Copied to Clipboard"})
+		PUIApp.shared().toast({msg: "Copied to Clipboard"})
 	}
 
 	return (<PUICard onClick={handleOnClick} className={"PUIImmutableNumericStatus" + (props.className ? (" " + props.className) : "")}>

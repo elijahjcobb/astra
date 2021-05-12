@@ -8,7 +8,7 @@
 import React, {ReactElement, PropsWithChildren, useContext} from "react";
 import "./PUIGage.css";
 import {PUICard} from "../PUICard/PUICard";
-import {PUIColor, PUIContext} from "../../helpers/PUIApp";
+import {PUIApp, PUIColor, PUIContext} from "../../helpers/PUIApp";
 
 export interface PUIGageProps {
 	label: string;
@@ -46,7 +46,7 @@ export function PUIGage(props: PropsWithChildren<PUIGageProps>): ReactElement {
 
 	function handleClick(): void {
 		navigator.clipboard.writeText(getTextValue()).catch(console.error);
-		context.toast({msg: "Copied to Clipboard"})
+		PUIApp.shared().toast({msg: "Copied to Clipboard"})
 	}
 
 	function getTextValue(): string {

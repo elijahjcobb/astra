@@ -9,7 +9,7 @@ import React, {PropsWithChildren, ReactElement, useContext, useEffect, useRef, u
 import "./PUILog.css";
 import {PUICard} from "../PUICard/PUICard";
 import {PUIMutableBinaryStatus} from "../PUIMutableBinaryStatus/PUIMutableBinaryStatus";
-import {PUIColor, PUIContext} from "../../helpers/PUIApp";
+import {PUIApp, PUIColor, PUIContext} from "../../helpers/PUIApp";
 import {
 	ArrowDownward,
 	ArrowUpward,
@@ -62,10 +62,7 @@ export class PUILogItem {
 
 export interface PUILogProps {
 	rows?: number;
-	log: PUILogItem[];
-	clearLog: () => void;
 }
-
 
 export function PUILog(props: PropsWithChildren<PUILogProps>): ReactElement {
 
@@ -78,7 +75,7 @@ export function PUILog(props: PropsWithChildren<PUILogProps>): ReactElement {
 	const context = useContext(PUIContext);
 
 	function getLog(): PUILogItem[]  {
-		return props.log.filter(v => {
+		return context.log.filter(v => {
 			return (v.type === PUILogType.INFO && showInfo) ||
 				(v.type === PUILogType.WARNING && showWarning) ||
 					(v.type === PUILogType.DEBUG && showDebug) ||
@@ -117,8 +114,8 @@ export function PUILog(props: PropsWithChildren<PUILogProps>): ReactElement {
 			<ArrowUpward titleAccess={"scroll to top"} onClick={() => scroll(false)}/>
 			<ArrowDownward titleAccess={"scroll to bottom"} onClick={() => scroll()}/>
 			{autoScroll ? <LocalShipping titleAccess={"disable autoscroll"} onClick={() => setAutoScroll(false)}/> : <LocalShippingOutlined titleAccess={"enable autoscroll"} onClick={() => setAutoScroll(true)}/>}
-			<FileCopy titleAccess={"copy to clipboard"} onClick={() => context.toast({msg: "Copied log to clipboard."})} />
-			<Delete titleAccess={"clear"} onClick={props.clearLog} />
+			<FileCopy titleAccess={"copy to clipboard"} onClick={() => PUIApp.shared().toast({msg: "Copied log to clipboard."})} />
+			<Delete titleAccess={"clear"} onClick={PUIApp.shared().clearLog} />
 		</div>
 	</PUICard>);
 

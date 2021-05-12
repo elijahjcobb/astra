@@ -26,8 +26,6 @@ export function TestBed(): ReactElement {
 	const currentRange: [number, number] = [0, 1];
 	const currentPrecision = 2;
 
-	const [log, setLog] = useState<PUILogItem[]>([]);
-
 	return <PUIApp className={"TestBed"}>
 		<PUIMutableNumericStatus label={"Current 1"} range={currentRange} precision={currentPrecision} value={value} setValue={(v) => {
 			console.log(v)
@@ -49,19 +47,20 @@ export function TestBed(): ReactElement {
 		<PUIImmutableBinaryStatus label={"Boo"} value={boo}/>
 		<PUIMutableBinaryStatus label={"Boo"} value={boo} setValue={setBoo}/>
 		<span onClick={() => {
-			setLog([...log, new PUILogItem(PUILogType.INFO, "Hello, world!")])
+			PUIApp.shared().logInfo("Well this is an info.");
 		}}>Add Info</span>
 		<span onClick={() => {
-			setLog([...log, new PUILogItem(PUILogType.WARNING, "Hello, world!")])
+			PUIApp.shared().logWarning("Well this is an info.");
 		}}>Add Warning</span>
 		<span onClick={() => {
-			setLog([...log, new PUILogItem(PUILogType.ERROR, "Hello, world!")])
+			PUIApp.shared().logError("Well this is an info.");
 		}}>Add Error</span>
 		<span onClick={() => {
-			setLog([...log, new PUILogItem(PUILogType.DEBUG, "Hello, world!")])
+			PUIApp.shared().logDebug("Well this is an info.");
 		}}>Add Debug</span>
 		<PUIGage label={"Current 1"} unit={"amps"} value={value} range={currentRange} precision={currentPrecision}/>
-		<PUILog clearLog={() => setLog([])} log={log}/>
+		<PUILog />
+		<PUILog />
 	</PUIApp>
 
 }
