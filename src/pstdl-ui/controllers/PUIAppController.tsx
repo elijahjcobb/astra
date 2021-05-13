@@ -7,13 +7,13 @@
 
 import React, {ReactElement} from "react";
 import {PUIAlert, PUIToast} from "../components";
-import {usePUIClearAlert, usePUIClearToast, usePUIGetState} from "../hooks";
+import {usePUIAlertHide, usePUIClearToast, usePUIGetState} from "../hooks";
 
 export function PUIAppController(): ReactElement {
 
 	const state = usePUIGetState();
 	const clearToast = usePUIClearToast();
-	const clearAlert = usePUIClearAlert();
+	const clearAlert = usePUIAlertHide();
 
 	return (<div className={"PUIAppController"}>
 		{state.toast && <PUIToast

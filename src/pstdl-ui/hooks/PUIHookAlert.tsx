@@ -15,7 +15,7 @@ export function usePUIAlert(): (config: PUIAlertConfig) => void {
 	}
 }
 
-export function usePUIClearAlert(): () => void {
+export function usePUIAlertHide(): () => void {
 	const setState = usePUISetState();
 	return () => {
 		setState(s => ({...s, alert: undefined}))

@@ -5,10 +5,11 @@
  * github.com/elijahjcobb
  */
 
-import React, {ReactElement, PropsWithChildren} from "react";
+import React, {PropsWithChildren, ReactElement} from "react";
 import {Snackbar} from "@material-ui/core";
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import MuiAlert, {AlertProps} from '@material-ui/lab/Alert';
 import {PUIColor} from "../../../PUIColor";
+import {PUIStatus} from "../../../PUIStatus";
 
 function Alert(props: AlertProps) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -19,31 +20,24 @@ export interface PUIToastProps {
 	duration?: number;
 	onClose: () => void;
 	msg?: string;
-	type?: PUIToastType;
-}
-
-export enum PUIToastType {
-	error = "error",
-	warning = "warning",
-	info = "info",
-	success = "success"
+	type?: PUIStatus;
 }
 
 export interface PUIToastConfig {
 	duration?: number;
 	msg?: string;
-	type?: PUIToastType;
+	type?: PUIStatus;
 }
 
 export function PUIToast(props: PropsWithChildren<PUIToastProps>): ReactElement {
 
 	function getColor(): string {
 		switch (props.type) {
-			case PUIToastType.error:
+			case PUIStatus.ERROR:
 				return PUIColor.red;
-			case PUIToastType.success:
+			case PUIStatus.SUCCESS:
 				return PUIColor.green;
-			case PUIToastType.warning:
+			case PUIStatus.WARNING:
 				return PUIColor.yellow;
 			default:
 				return PUIColor.blue;
@@ -52,7 +46,7 @@ export function PUIToast(props: PropsWithChildren<PUIToastProps>): ReactElement 
 
 	const d = (props.duration !== undefined) ? (props.duration * 1000) : 6000;
 	return (<Snackbar open={true} autoHideDuration={d} onClose={props.onClose}>
-		<Alert style={{background: getColor(), color: PUIColor.black}} onClose={props.onClose} severity={props.type ?? PUIToastType.info}>{props.msg}</Alert>
+		<Alert style={{background: getColor(), color: PUIColor.black}} onClose={props.onClose} severity={props.type ?? PUIStatus.INFO}>{props.msg}</Alert>
 	</Snackbar>);
 
 }

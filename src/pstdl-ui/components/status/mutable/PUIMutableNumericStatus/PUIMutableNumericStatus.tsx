@@ -7,8 +7,9 @@
 
 import React, {PropsWithChildren, ReactElement, useRef, useState} from "react";
 import "./PUIMutableNumericStatus.css";
-import {PUIToastType, PUICard} from "../../../views";
+import {PUICard} from "../../../views";
 import {usePUIToast} from "../../../../hooks";
+import {PUIStatus} from "../../../../PUIStatus";
 
 export interface PUIMutableNumericStatusProps {
 	label: string;
@@ -42,7 +43,7 @@ export function PUIMutableNumericStatus(props: PropsWithChildren<PUIMutableNumer
 				v = props.range[0];
 			}
 		}
-		if (err) toast({msg: err, type: PUIToastType.warning});
+		if (err) toast({msg: err, type: PUIStatus.WARNING});
 		if (props.setValue) props.setValue(v)
 		setFieldValue(v.toFixed(props.precision ?? 0))
 	}

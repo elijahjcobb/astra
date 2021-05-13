@@ -17,8 +17,8 @@ export class PUIKeyboardController {
 	private constructor() {
 
 		this.emitter = new EventEmitter();
-		window.onkeyup = (ev: KeyboardEvent) => this.emitter.emit("keyUp", ev);
-		window.onkeydown = (ev: KeyboardEvent) => this.emitter.emit("keyDown", ev);
+		// window.onkeyup = (ev: KeyboardEvent) => this.emitter.emit("keyUp", ev);
+		// window.onkeydown = (ev: KeyboardEvent) => this.emitter.emit("keyDown", ev);
 
 	}
 
