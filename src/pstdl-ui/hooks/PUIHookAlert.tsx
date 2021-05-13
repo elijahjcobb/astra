@@ -5,7 +5,7 @@
  * github.com/elijahjcobb
  */
 
-import {PUIAlertConfig} from "../components/views/PUIAlert/PUIAlert";
+import {PUIAlertConfig} from "../components";
 import {usePUISetState} from "./PUIHookState";
 
 export function usePUIAlert(): (config: PUIAlertConfig) => void {

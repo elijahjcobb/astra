@@ -7,7 +7,7 @@
 
 import React, {ReactElement, PropsWithChildren} from "react";
 import "./PUISegmentedPicker.css";
-import {PUICard} from "../../../views/PUICard/PUICard";
+import {PUICard} from "../../../views";
 
 export interface PUISegmentedPickerProps {
 	label: string;

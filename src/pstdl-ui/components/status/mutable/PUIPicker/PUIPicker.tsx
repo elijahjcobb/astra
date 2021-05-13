@@ -7,7 +7,7 @@
 
 import React, {ReactElement, PropsWithChildren} from "react";
 import "./PUIPicker.css"
-import {PUICard} from "../../../views/PUICard/PUICard";
+import {PUICard} from "../../../views";
 import {MenuItem, Select} from "@material-ui/core";
 
 export interface PUIPickerProps {

@@ -8,7 +8,7 @@
 import React, {PropsWithChildren, ReactElement} from "react";
 import "./PUIMutableBinaryStatus.css";
 import {CheckBox, CheckBoxOutlineBlank} from "@material-ui/icons";
-import {PUICard} from "../../../views/PUICard/PUICard";
+import {PUICard} from "../../../views";
 import {PUIColor} from "../../../../PUIColor";
 
 export interface PUIMutableBinaryStatusProps {

@@ -7,7 +7,7 @@
 
 import React, {ReactElement, PropsWithChildren} from "react";
 import "./PUIImmutableBinaryStatus.css"
-import {PUICard} from "../../../views/PUICard/PUICard";
+import {PUICard} from "../../../views";
 import {PUIColor} from "../../../../PUIColor";
 
 export interface PUIImmutableBinaryStatusProps {

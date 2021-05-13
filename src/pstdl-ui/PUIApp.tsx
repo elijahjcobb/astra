@@ -7,7 +7,7 @@
 
 import {PropsWithChildren, ReactElement} from "react";
 import {PUIContextProvider} from "./PUIContext";
-import {PUIAppController} from "./controllers/PUIAppController";
+import {PUIAppController} from "./controllers";
 
 export function PUIApp(props: PropsWithChildren<{}>): ReactElement {
 

@@ -5,7 +5,7 @@
  * github.com/elijahjcobb
  */
 
-import {PUIToastConfig} from "../components/views/PUIToast/PUIToast";
+import {PUIToastConfig} from "../components";
 import {usePUISetState} from "./PUIHookState";
 
 export function usePUIToast(): (config: PUIToastConfig) => void {

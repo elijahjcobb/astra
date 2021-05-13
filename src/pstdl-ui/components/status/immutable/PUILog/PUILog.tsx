@@ -7,7 +7,7 @@
 
 import React, {PropsWithChildren, ReactElement, useEffect, useRef, useState} from "react";
 import "./PUILog.css";
-import {PUICard} from "../../../views/PUICard/PUICard";
+import {PUICard} from "../../../views";
 import {PUIMutableBinaryStatus} from "../../mutable/PUIMutableBinaryStatus/PUIMutableBinaryStatus";
 import {PUIColor} from "../../../../PUIColor";
 import {
@@ -18,9 +18,7 @@ import {
 	LocalShipping,
 	LocalShippingOutlined,
 } from "@material-ui/icons"
-import {usePUIGetState} from "../../../../hooks/PUIHookState";
-import {usePUIClearLog} from "../../../../hooks/PUIHookLog";
-import {usePUIToast} from "../../../../hooks/PUIHookToast";
+import {usePUIGetState, usePUIToast, usePUIClearLog} from "../../../../hooks";
 
 export enum PUILogType {
 	INFO,

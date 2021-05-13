@@ -6,9 +6,7 @@
  */
 
 import React, {ReactElement, PropsWithChildren, useState, createContext, Dispatch, SetStateAction} from "react";
-import {PUIToastConfig} from "./components/views/PUIToast/PUIToast";
-import {PUIAlertConfig} from "./components/views/PUIAlert/PUIAlert";
-import {PUILogItem} from "./components/status/immutable/PUILog/PUILog";
+import {PUILogItem, PUIToastConfig, PUIAlertConfig} from "./components";
 
 export type PUIContextType = [PUIContextState, Dispatch<SetStateAction<PUIContextState>>]
 

@@ -7,7 +7,7 @@
 
 import React, {ReactElement, PropsWithChildren} from "react";
 import "./PUISlider.css";
-import {PUICard} from "../../../views/PUICard/PUICard";
+import {PUICard} from "../../../views";
 import {Input, Slider} from "@material-ui/core";
 
 export interface PUISliderProps {

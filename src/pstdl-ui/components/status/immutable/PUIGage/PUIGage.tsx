@@ -7,9 +7,9 @@
 
 import React, {ReactElement, PropsWithChildren} from "react";
 import "./PUIGage.css";
-import {PUICard} from "../../../views/PUICard/PUICard";
+import {PUICard} from "../../../views";
 import {PUIColor} from "../../../../PUIColor";
-import {usePUIToast} from "../../../../hooks/PUIHookToast";
+import {usePUIToast} from "../../../../hooks";
 
 export interface PUIGageProps {
 	label: string;

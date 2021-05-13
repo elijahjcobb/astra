@@ -6,10 +6,9 @@
  */
 
 import React, {PropsWithChildren, ReactElement, useRef, useState} from "react";
-import {PUICard} from "../../../views/PUICard/PUICard";
 import "./PUIMutableNumericStatus.css";
-import {PUIToastType} from "../../../views/PUIToast/PUIToast";
-import {usePUIToast} from "../../../../hooks/PUIHookToast";
+import {PUIToastType, PUICard} from "../../../views";
+import {usePUIToast} from "../../../../hooks";
 
 export interface PUIMutableNumericStatusProps {
 	label: string;

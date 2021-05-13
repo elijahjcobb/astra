@@ -6,11 +6,8 @@
  */
 
 import React, {ReactElement} from "react";
-import {PUIToast} from "../components/views/PUIToast/PUIToast";
-import {PUIAlert} from "../components/views/PUIAlert/PUIAlert";
-import {usePUIGetState} from "../hooks/PUIHookState";
-import {usePUIClearToast} from "../hooks/PUIHookToast";
-import {usePUIClearAlert} from "../hooks/PUIHookAlert";
+import {PUIAlert, PUIToast} from "../components";
+import {usePUIClearAlert, usePUIClearToast, usePUIGetState} from "../hooks";
 
 export function PUIAppController(): ReactElement {
 

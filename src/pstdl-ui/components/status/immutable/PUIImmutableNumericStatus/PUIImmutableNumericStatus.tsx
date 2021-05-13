@@ -7,8 +7,8 @@
 
 import React, {PropsWithChildren, ReactElement} from "react";
 import "./PUIImmutableNumericStatus.css";
-import {PUICard} from "../../../views/PUICard/PUICard";
-import {usePUIToast} from "../../../../hooks/PUIHookToast";
+import {PUICard} from "../../../views";
+import {usePUIToast} from "../../../../hooks";
 
 export interface PUIImmutableNumericStatusProps {
 	className?: string;
