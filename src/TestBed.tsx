@@ -4,18 +4,18 @@
  * ejcobb@mtu.edu
  */
 
+import {
+	PUIGage,
+	PUIImmutableBinaryStatus,
+	PUIImmutableNumericStatus, PUILog,
+	PUIMutableBinaryStatus, PUIMutableNumericStatus, PUIPicker,
+	PUISegmentedPicker,
+	usePUIAlert,
+	usePUILogDebug, usePUILogError, usePUILogInfo, usePUILogWarning
+} from "./pstdl-ui";
+
 import {ReactElement, useState} from "react";
 import "./TestBed.css";
-import {PUIImmutableNumericStatus} from "./components/status/immutable/PUIImmutableNumericStatus/PUIImmutableNumericStatus";
-import {PUISegmentedPicker} from "./components/status/mutable/PUISegmentedPicker/PUISegmentedPicker";
-import {PUIMutableBinaryStatus} from "./components/status/mutable/PUIMutableBinaryStatus/PUIMutableBinaryStatus";
-import {PUILog, PUILogType} from "./components/status/immutable/PUILog/PUILog";
-import {PUIImmutableBinaryStatus} from "./components/status/immutable/PUIImmutableBinaryStatus/PUIImmutableBinaryStatus";
-import {PUIPicker} from "./components/status/mutable/PUIPicker/PUIPicker";
-import {PUIGage} from "./components/status/immutable/PUIGage/PUIGage";
-import {PUIMutableNumericStatus} from "./components/status/mutable/PUIMutableNumericStatus/PUIMutableNumericStatus";
-import {usePUILog} from "./hooks/PUIHookLog";
-import {usePUIAlert} from "./hooks/PUIHookAlert";
 
 export function TestBed(): ReactElement {
 
@@ -27,10 +27,10 @@ export function TestBed(): ReactElement {
 	const currentPrecision = 2;
 	const alert = usePUIAlert();
 
-	const logInfo = usePUILog(PUILogType.INFO);
-	const logWarning = usePUILog(PUILogType.WARNING);
-	const logDebug = usePUILog(PUILogType.DEBUG);
-	const logError = usePUILog(PUILogType.ERROR);
+	const logInfo = usePUILogInfo();
+	const logWarning = usePUILogWarning();
+	const logDebug = usePUILogDebug();
+	const logError = usePUILogError();
 
 	return <div className={"TestBed"}>
 		<span onClick={() => {
