@@ -1,0 +1,34 @@
+/**
+ * Elijah Cobb
+ * elijah@elijahcobb.com
+ * elijahcobb.com
+ * github.com/elijahjcobb
+ */
+
+@import "../../../../_global";
+
+.PUIPicker {
+
+	.label {
+		margin-right: $small;
+		user-select: none;
+	}
+
+	.picker {
+		background: $background !important;
+		color: $white !important;
+		border: none;
+		font-family: $mono;
+		font-size: 1em;
+		outline: none;
+		user-select: none;
+	}
+
+	.picker:hover {
+		cursor: pointer;
+	}
+
+	.MuiSelect-icon {
+		color: $white;
+	}
+}

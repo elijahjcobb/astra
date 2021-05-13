@@ -6,16 +6,16 @@
 
 import {ReactElement, useState} from "react";
 import "./TestBed.css";
-import {PUIApp} from "./helpers/PUIApp";
-import {PUIImmutableNumericStatus} from "./components/PUIImmutableNumericStatus/PUIImmutableNumericStatus";
-import {PUISegmentedPicker} from "./components/PUISegmentedPicker/PUISegmentedPicker";
-import {PUIMutableBinaryStatus} from "./components/PUIMutableBinaryStatus/PUIMutableBinaryStatus";
-import {PUILog} from "./components/PUILog/PUILog";
-import {PUIImmutableBinaryStatus} from "./components/PUIImmutableBinaryStatus/PUIImmutableBinaryStatus";
-import {PUIPicker} from "./components/PUIPicker/PUIPicker";
-import {PUIGage} from "./components/PUIGage/PUIGage";
-import {PUIMutableNumericStatus} from "./components/PUIMutableNumericStatus/PUIMutableNumericStatus";
-
+import {PUIImmutableNumericStatus} from "./components/status/immutable/PUIImmutableNumericStatus/PUIImmutableNumericStatus";
+import {PUISegmentedPicker} from "./components/status/mutable/PUISegmentedPicker/PUISegmentedPicker";
+import {PUIMutableBinaryStatus} from "./components/status/mutable/PUIMutableBinaryStatus/PUIMutableBinaryStatus";
+import {PUILog, PUILogType} from "./components/status/immutable/PUILog/PUILog";
+import {PUIImmutableBinaryStatus} from "./components/status/immutable/PUIImmutableBinaryStatus/PUIImmutableBinaryStatus";
+import {PUIPicker} from "./components/status/mutable/PUIPicker/PUIPicker";
+import {PUIGage} from "./components/status/immutable/PUIGage/PUIGage";
+import {PUIMutableNumericStatus} from "./components/status/mutable/PUIMutableNumericStatus/PUIMutableNumericStatus";
+import {usePUILog} from "./hooks/PUIHookLog";
+import {usePUIAlert} from "./hooks/PUIHookAlert";
 
 export function TestBed(): ReactElement {
 
@@ -25,11 +25,16 @@ export function TestBed(): ReactElement {
 
 	const currentRange: [number, number] = [0, 1];
 	const currentPrecision = 2;
+	const alert = usePUIAlert();
 
+	const logInfo = usePUILog(PUILogType.INFO);
+	const logWarning = usePUILog(PUILogType.WARNING);
+	const logDebug = usePUILog(PUILogType.DEBUG);
+	const logError = usePUILog(PUILogType.ERROR);
 
-	return <PUIApp className={"TestBed"}>
+	return <div className={"TestBed"}>
 		<span onClick={() => {
-			PUIApp.alert({
+			alert({
 				title: "This is the title.",
 				message: "This is the message. It is smaller and longer."
 			})
@@ -54,20 +59,20 @@ export function TestBed(): ReactElement {
 		<PUIImmutableBinaryStatus label={"Boo"} value={boo}/>
 		<PUIMutableBinaryStatus label={"Boo"} value={boo} setValue={setBoo}/>
 		<span onClick={() => {
-			PUIApp.shared().logInfo("Well this is an info.");
+			logInfo("Well this is an info.");
 		}}>Add Info</span>
 		<span onClick={() => {
-			PUIApp.shared().logWarning("Well this is an info.");
+			logWarning("Well this is an info.");
 		}}>Add Warning</span>
 		<span onClick={() => {
-			PUIApp.shared().logError("Well this is an info.");
+			logError("Well this is an info.");
 		}}>Add Error</span>
 		<span onClick={() => {
-			PUIApp.shared().logDebug("Well this is an info.");
+			logDebug("Well this is an info.");
 		}}>Add Debug</span>
 		<PUIGage label={"Current 1"} unit={"amps"} value={value} range={currentRange} precision={currentPrecision}/>
 		<PUILog />
 		<PUILog />
-	</PUIApp>
+	</div>
 
 }

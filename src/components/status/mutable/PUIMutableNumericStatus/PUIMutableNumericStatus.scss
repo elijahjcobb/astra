@@ -1,0 +1,46 @@
+/**
+ * Elijah Cobb
+ * elijah@elijahcobb.com
+ * elijahcobb.com
+ * github.com/elijahjcobb
+ */
+
+@import "../../../../_global";
+
+.PUIMutableNumericStatus {
+	display: flex;
+	align-items: center;
+	padding: 0 $medium;
+	transition: box-shadow 250ms ease-in-out, transform 250ms ease-in-out;
+
+	.label {
+		padding-right: $medium;
+		user-select: none;
+	}
+
+	.field {
+		font-weight: bold;
+		padding: $medium 0;
+		background: none;
+		width: 80px;
+		border: none;
+		outline: none;
+		color: $white;
+		font-family: $mono;
+		font-size: 1em;
+	}
+
+	.err {
+		color: $red;
+	}
+
+}
+
+.PUIMutableNumericStatus:focus-within {
+	box-shadow: 0 0 20px black;
+	transform: scale(1.05);
+}
+
+.PUIMutableNumericStatus:hover {
+	cursor: pointer;
+}

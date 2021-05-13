@@ -1,0 +1,16 @@
+/**
+ * Elijah Cobb
+ * elijah@elijahcobb.com
+ * elijahcobb.com
+ * github.com/elijahjcobb
+ */
+
+@import "../../../_global";
+
+.PUICard {
+	background: $background;
+	padding: $medium;
+	border-radius: $small;
+	margin: $medium;
+	box-shadow: 0 0 $small/2 $background;
+}

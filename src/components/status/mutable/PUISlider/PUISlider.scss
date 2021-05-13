@@ -1,0 +1,38 @@
+/**
+ * Elijah Cobb
+ * elijah@elijahcobb.com
+ * elijahcobb.com
+ * github.com/elijahjcobb
+ */
+
+@import "../../../../_global";
+
+.PUISlider {
+	padding: $big;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	color: $white;
+
+	.bottom {
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		padding: $small;
+	}
+
+	.slider {
+		min-width: 100px;
+		color: $blue;
+	}
+
+	.input {
+		min-width: 40px;
+		margin-left: $small;
+		color: $white;
+		border-color: $white;
+	}
+
+}
+
