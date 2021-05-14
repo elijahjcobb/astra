@@ -8,8 +8,8 @@
 export * from "./PUIApp";
 export * from "./PUIColor";
 export * from "./PUIContext";
+export * from "./PUIStatus";
 
 export * from "./hooks";
 export * from "./components";
 export * from "./controllers";
-export {PUIStatus} from "./PUIStatus";
