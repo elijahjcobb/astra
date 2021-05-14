@@ -4,7 +4,7 @@
  * ejcobb@mtu.edu
  */
 
-import {PropsWithChildren, ReactElement} from "react";
+import React, {PropsWithChildren, ReactElement} from "react";
 import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@material-ui/core";
 import {PUIColor} from "../../../PUIColor";
 

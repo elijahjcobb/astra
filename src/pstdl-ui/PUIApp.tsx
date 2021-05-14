@@ -5,7 +5,7 @@
  * github.com/elijahjcobb
  */
 
-import {PropsWithChildren, ReactElement} from "react";
+import React, {PropsWithChildren, ReactElement} from "react";
 import {PUIContextProvider} from "./PUIContext";
 import {PUIAppController} from "./controllers";
 

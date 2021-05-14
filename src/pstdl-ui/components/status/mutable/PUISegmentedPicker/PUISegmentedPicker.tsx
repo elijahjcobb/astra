@@ -24,7 +24,7 @@ export function PUISegmentedPicker(props: PropsWithChildren<PUISegmentedPickerPr
 			{
 				props.options.map((v, i) => {
 					return <span
-						className={"option" + (i === props.value ? " selected" : "")}
+						className={"option" + (i === props.value ? " selected":"")}
 						key={i}
 						onClick={() => props.setValue(i)}
 					>{v}</span>
