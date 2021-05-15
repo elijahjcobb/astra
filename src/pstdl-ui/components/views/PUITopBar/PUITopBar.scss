@@ -1,0 +1,81 @@
+/**
+ * Elijah Cobb
+ * elijah@elijahcobb.com
+ * elijahcobb.com
+ * github.com/elijahjcobb
+ */
+
+@import "../../../__global";
+
+.PUITopBar {
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	background: $background;
+	user-select: none;
+
+	.title {
+
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+
+		span {
+			font-family: $font;
+			font-size: 1.25em;
+			font-weight: bold;
+			margin-left: $small;
+		}
+
+		img {
+			width: 40px;
+			height: 40px;
+			object-fit: contain;
+			margin-left: $small;
+			user-select: none;
+			pointer-events: none;
+		}
+	}
+
+	.btns {
+		display: flex;
+		align-items: center;
+
+		.PUITopBarButton {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: $small;
+			transition: background 250ms ease-in-out, color 250ms ease-in-out;
+		}
+
+		.PUITopBarButton > * {
+			width: 30px;
+			height: 30px;
+		}
+
+		.minimize {
+			color: $yellow;
+		}
+
+		.close {
+			color: $red;
+		}
+
+		.PUITopBarButton:hover {
+			color: $background;
+			cursor: pointer;
+		}
+
+		.close:hover {
+			background: $red;
+		}
+
+		.minimize:hover {
+			background: $yellow;
+		}
+	}
+
+}
