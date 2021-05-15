@@ -8,3 +8,4 @@
 export * from "./PUIAlert/PUIAlert";
 export * from "./PUICard/PUICard";
 export * from "./PUIToast/PUIToast";
+export * from "./PUITopBar/PUITopBar";

@@ -6,7 +6,7 @@
 
 import "./TestBed.css";
 import {ReactElement} from "react";
-import {PUIStatus, usePUIToast, PUIKeyboardController} from "./pstdl-ui";
+import {PUIStatus, usePUIToast, PUIKeyboardController, PUITopBar} from "./pstdl-ui";
 
 
 export function TestBed(): ReactElement {
@@ -22,6 +22,10 @@ export function TestBed(): ReactElement {
 	})
 
 	return <div className={"TestBed"}>
+		<PUITopBar
+			icon={"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1200px-NASA_logo.svg.png"}
+			title={"PSTDL Field Rover"}
+		/>
 		<button onClick={() => {
 			toast({msg: "Hello, pstdl-ui!", type: PUIStatus.SUCCESS})
 		}}>Show Toast!</button>
