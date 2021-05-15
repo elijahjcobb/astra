@@ -36,8 +36,9 @@
 	],
 	"scripts": {
 		"test": "react-scripts start",
-		"compile": "npm run clean && mkdir -p build && tsc --build tspublish.json",
-		"clean": "rm -rf build/js && rm -rf build/dts",
+		"compile": "npm run clean && mkdir -p build && tsc --build tspublish.json && npm run css-copy",
+		"css-copy": "cd src/pstdl-ui && find . -name '*.css' -exec cp --parents '{}' ../../build/js \\; && cd ../../",
+		"clean": "rm -rf build",
 		"prepublishOnly": "npm run compile",
 		"postpublish": "npm run clean"
 	},
