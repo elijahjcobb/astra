@@ -7,27 +7,43 @@
 
 import {EventEmitter} from "events";
 
-type PUIKeyboardControllerHandler = (event: KeyboardEvent) => void;
+type PUIKeyboardControllerHandler = (key: string, ctrl: boolean) => void;
 
 export class PUIKeyboardController {
 
 	private emitter: EventEmitter;
-	private static singleton: PUIKeyboardController = new PUIKeyboardController();
+	private readonly cache: Set<String>;
+	private static singleton: PUIKeyboardController | undefined;
 
 	private constructor() {
 
 		this.emitter = new EventEmitter();
-		// window.onkeyup = (ev: KeyboardEvent) => this.emitter.emit("keyUp", ev);
-		// window.onkeydown = (ev: KeyboardEvent) => this.emitter.emit("keyDown", ev);
+		this.cache = new Set();
 
+		window.onkeydown = (ev: KeyboardEvent) => {
+			if (this.cache.has(ev.key)) return;
+			this.cache.add(ev.key);
+			this.emitter.emit("keyDown", {key: ev.key, ctrl: ev.ctrlKey})
+		};
+
+		window.onkeyup = (ev: KeyboardEvent) => {
+			this.cache.delete(ev.key);
+			this.emitter.emit("keyUp", {key: ev.key, ctrl: ev.ctrlKey});
+		}
+
+	}
+
+	private static shared(): PUIKeyboardController {
+		if (this.singleton === undefined) this.singleton = new PUIKeyboardController();
+		return this.singleton;
 	}
 
 	public static onKeyUp(handler: PUIKeyboardControllerHandler): void {
-		this.singleton.emitter.on("keyUp", handler)
+		this.shared().emitter.on("keyUp", handler)
 	}
 
 	public static onKeyDown(handler: PUIKeyboardControllerHandler): void {
-		this.singleton.emitter.on("keyDown", handler)
+		this.shared().emitter.on("keyDown", handler)
 	}
 }
 

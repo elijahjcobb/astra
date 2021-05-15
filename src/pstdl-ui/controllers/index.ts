@@ -7,3 +7,4 @@
 
 export * from "./PUIAppController"
 export * from "./PUIKeyboardController"
+export * from "./PUIGamepadController"

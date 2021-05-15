@@ -5,12 +5,21 @@
  */
 
 import "./TestBed.css";
-import {PUIStatus, usePUIToast} from "./pstdl-ui";
 import {ReactElement} from "react";
+import {PUIStatus, usePUIToast, PUIKeyboardController} from "./pstdl-ui";
+
 
 export function TestBed(): ReactElement {
 
 	const toast = usePUIToast();
+
+	PUIKeyboardController.onKeyDown(e => {
+		console.log(e);
+	})
+
+	PUIKeyboardController.onKeyUp(e => {
+		console.log(e);
+	})
 
 	return <div className={"TestBed"}>
 		<button onClick={() => {
