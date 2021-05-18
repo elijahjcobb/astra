@@ -1,5 +1,23 @@
 @import "../../../__global";
 
 .PUIGamepadJoystick {
-	
+
+	$scalingFactor: $big * 5;
+	$containerSize: $scalingFactor;
+	$circleSize: $scalingFactor * 0.6;
+
+	background: $background;
+	width: $containerSize;
+	height: $containerSize;
+	border-radius: 50%;
+	overflow: visible;
+	border: solid 1px $blue;
+
+	.circle {
+		background: $blue;
+		width: $circleSize;
+		height: $circleSize;
+		border-radius: 50%;
+		border: solid 1px $black;
+	}
 }
