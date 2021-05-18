@@ -15,7 +15,14 @@ export function usePUIClearLog(): () => void {
 	}
 }
 
-export function usePUILog(type: PUILogType): (data: any) => void {
+export function usePUILog(): (type: PUILogType, data: any) => void {
+	const setState = usePUISetState();
+	return (type: PUILogType, data: any) => {
+		setState(s => ({...s, log: [...s.log, new PUILogItem(type, data)]}))
+	}
+}
+
+export function usePUILogWithType(type: PUILogType): (data: any) => void {
 	const setState = usePUISetState();
 	return (data: any) => {
 		setState(s => ({...s, log: [...s.log, new PUILogItem(type, data)]}))
@@ -23,17 +30,17 @@ export function usePUILog(type: PUILogType): (data: any) => void {
 }
 
 export function usePUILogInfo(): (data: any) => void {
-	return usePUILog(PUILogType.INFO);
+	return usePUILogWithType(PUILogType.INFO);
 }
 
 export function usePUILogWarning(): (data: any) => void {
-	return usePUILog(PUILogType.WARNING);
+	return usePUILogWithType(PUILogType.WARNING);
 }
 
 export function usePUILogError(): (data: any) => void {
-	return usePUILog(PUILogType.ERROR);
+	return usePUILogWithType(PUILogType.ERROR);
 }
 
 export function usePUILogDebug(): (data: any) => void {
-	return usePUILog(PUILogType.DEBUG);
+	return usePUILogWithType(PUILogType.DEBUG);
 }
