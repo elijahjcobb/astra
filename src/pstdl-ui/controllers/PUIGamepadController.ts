@@ -57,6 +57,7 @@ export class PUIGamepadController extends EventEmitter {
 		super();
 
 		this.controlLoop = this.controlLoop.bind(this);
+		this.kill = this.kill.bind(this);
 		this.onActionCommitted = this.onActionCommitted.bind(this);
 		window.addEventListener("gamepadconnected", this.controlLoop);
 
@@ -124,6 +125,10 @@ export class PUIGamepadController extends EventEmitter {
 
 		this._state = gamepad;
 
+	}
+
+	public kill(): void {
+		window.removeEventListener("gamepadconnected", this.controlLoop);
 	}
 
 }

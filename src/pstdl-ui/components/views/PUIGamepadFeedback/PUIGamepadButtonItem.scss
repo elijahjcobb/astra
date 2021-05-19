@@ -1,0 +1,35 @@
+/**
+ * Elijah Cobb
+ * elijah@elijahcobb.com
+ * elijahcobb.com
+ * github.com/elijahjcobb
+ */
+
+@import "../../../__global";
+
+.PUIGamepadButtonItem {
+	border: solid $small/2 $white;
+	border-radius: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: $small/2;
+	transition: transform 25ms ease-in-out, border-color 25ms ease-in-out;
+
+	.MuiSvgIcon-root {
+		transition: color 25ms ease-in-out;
+		width: $big * 2;
+		height: $big * 2;
+	}
+
+}
+
+.PUIGamepadButtonItem-clicked {
+	border-color: $blue;
+	transform: scale(1.125);
+
+	.MuiSvgIcon-root {
+		color: $blue;
+	}
+
+}

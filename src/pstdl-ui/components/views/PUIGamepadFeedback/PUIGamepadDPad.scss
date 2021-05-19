@@ -1,5 +1,12 @@
 @import "../../../__global";
 
-.PUIGamepadDPad {
+.buttons {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	gap: $small;
+	padding: $small;
+}
 
+.PUIGamepadDPad > * {
+	display: block;
 }
