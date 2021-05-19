@@ -55,7 +55,7 @@ export function PUIGamepadDPad(props: PropsWithChildren<PUIGamepadDPadProps>): R
 			<PUIGamepadButtonItem clicked={down}><ArrowDownward/></PUIGamepadButtonItem>
 			<div/>
 		</div>
-		{<span>{props.label ?? "D-Pad"}</span>}
+		{props.label && <span>{props.label}</span>}
 	</PUICard>)
 
 }

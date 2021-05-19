@@ -9,8 +9,13 @@ import "./PUIGamepadJoystick.css";
 import {PUICard} from "../PUICard/PUICard";
 import {PUIGamepadButton, PUIGamepadController} from "../../../controllers";
 
+export enum PUIGamepadJoystickType {
+	LEFT,
+	RIGHT
+}
+
 export interface PUIGamepadJoystickProps {
-	stick: "left" | "right";
+	stick: PUIGamepadJoystickType;
 	label?: string;
 }
 
@@ -26,16 +31,16 @@ export function PUIGamepadJoystick(props: PropsWithChildren<PUIGamepadJoystickPr
 	}
 
 	function onButtonDown(button: PUIGamepadButton): void {
-		if (button === (props.stick === "left" ? PUIGamepadButton.LS : PUIGamepadButton.RS)) setIsClicked(true);
+		if (button === (props.stick === PUIGamepadJoystickType.LEFT ? PUIGamepadButton.LS : PUIGamepadButton.RS)) setIsClicked(true);
 	}
 
 	function onButtonUp(button: PUIGamepadButton): void {
-		if (button === (props.stick === "left" ? PUIGamepadButton.LS : PUIGamepadButton.RS)) setIsClicked(false);
+		if (button === (props.stick === PUIGamepadJoystickType.LEFT ? PUIGamepadButton.LS : PUIGamepadButton.RS)) setIsClicked(false);
 	}
 
 	useEffect(() => {
 		const controller = new PUIGamepadController();
-		controller.on(props.stick === "left" ? "leftJoystickMove" : "rightJoystickMove", onMove);
+		controller.on(props.stick === PUIGamepadJoystickType.LEFT ? "leftJoystickMove" : "rightJoystickMove", onMove);
 		controller.on("buttonDown", onButtonDown);
 		controller.on("buttonUp", onButtonUp);
 		return controller.kill;
@@ -47,7 +52,7 @@ export function PUIGamepadJoystick(props: PropsWithChildren<PUIGamepadJoystickPr
 				transform: `translate(${x * 50}%,${y * 50}%)`
 			}} className={"circle" + (isClicked ? " clicked" : "") + ((x === 0 && y === 0) ? "" : " active")}/>
 		</div>
-		{<span>{props.label ?? (props.stick === "left" ? "L Joystick" : "R Joystick")}</span>}
+		{props.label && <span>{props.label}</span>}
 	</PUICard>)
 
 }

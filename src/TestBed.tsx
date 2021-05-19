@@ -5,11 +5,14 @@
  */
 
 import "./TestBed.css";
-import React, {ReactElement, useEffect, useState} from "react";
+import React, {ReactElement} from "react";
 import {PUIGamepadButtons} from "./pstdl-ui/components/views/PUIGamepadFeedback/PUIGamepadButtons";
 import {PUIGamepadDPad} from "./pstdl-ui/components/views/PUIGamepadFeedback/PUIGamepadDPad";
-import {PUIGamepadJoystick} from "./pstdl-ui/components/views/PUIGamepadFeedback/PUIGamepadJoystick";
-import {PUIGamepadController} from "./pstdl-ui";
+import {
+	PUIGamepadJoystick,
+	PUIGamepadJoystickType
+} from "./pstdl-ui/components/views/PUIGamepadFeedback/PUIGamepadJoystick";
+import {PUIGamepadTriggers} from "./pstdl-ui/components/views/PUIGamepadFeedback/PUIGamepadTriggers";
 
 export function TestBed(): ReactElement {
 
@@ -18,8 +21,9 @@ export function TestBed(): ReactElement {
 	return <div className={"TestBed"}>
 		<PUIGamepadButtons/>
 		<PUIGamepadDPad/>
-		<PUIGamepadJoystick stick={"left"}/>
-		<PUIGamepadJoystick stick={"right"}/>
+		<PUIGamepadJoystick stick={PUIGamepadJoystickType.LEFT}/>
+		<PUIGamepadJoystick stick={PUIGamepadJoystickType.RIGHT}/>
+		<PUIGamepadTriggers/>
 	</div>
 
 }

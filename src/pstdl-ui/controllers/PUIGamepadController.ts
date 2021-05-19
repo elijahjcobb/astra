@@ -18,14 +18,14 @@ export interface PUIGamepadControllerEvent {
 }
 
 export enum PUIGamepadButton {
-	A,
-	B,
-	X,
-	Y,
-	LB,
-	RB,
-	LT,
-	RT,
+	CROSS,
+	CIRCLE,
+	SQUARE,
+	TRIANGLE,
+	L1,
+	R1,
+	L2,
+	R2,
 	SELECT,
 	START,
 	LS,
@@ -34,7 +34,7 @@ export enum PUIGamepadButton {
 	DOWN,
 	LEFT,
 	RIGHT,
-	XBOX,
+	POWER_BUTTON,
 	UNKNOWN
 }
 
@@ -110,8 +110,8 @@ export class PUIGamepadController extends EventEmitter {
 			if (button.value === 1) this.emit("buttonDown", buttonId);
 			else if (button.value === 0) this.emit("buttonUp", buttonId);
 
-			if (buttonId === PUIGamepadButton.LT) this.emit("leftTrigger", button.value);
-			if (buttonId === PUIGamepadButton.RT) this.emit("rightTrigger", button.value);
+			if (buttonId === PUIGamepadButton.L2) this.emit("leftTrigger", button.value);
+			if (buttonId === PUIGamepadButton.R2) this.emit("rightTrigger", button.value);
 
 		}
 

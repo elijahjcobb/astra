@@ -27,17 +27,17 @@ export function PUIGamepadButtons(props: PropsWithChildren<PUIGamepadButtonsProp
 	const [right, setRight] = useState(false);
 
 	function onButtonDown(button: PUIGamepadButton): void {
-		if (button === PUIGamepadButton.X) setLeft(true);
-		else if (button === PUIGamepadButton.B) setRight(true);
-		else if (button === PUIGamepadButton.Y) setUp(true);
-		else if (button === PUIGamepadButton.A) setDown(true);
+		if (button === PUIGamepadButton.SQUARE) setLeft(true);
+		else if (button === PUIGamepadButton.CIRCLE) setRight(true);
+		else if (button === PUIGamepadButton.TRIANGLE) setUp(true);
+		else if (button === PUIGamepadButton.CROSS) setDown(true);
 	}
 
 	function onButtonUp(button: PUIGamepadButton): void {
-		if (button === PUIGamepadButton.X) setLeft(false);
-		else if (button === PUIGamepadButton.B) setRight(false);
-		else if (button === PUIGamepadButton.Y) setUp(false);
-		else if (button === PUIGamepadButton.A) setDown(false);
+		if (button === PUIGamepadButton.SQUARE) setLeft(false);
+		else if (button === PUIGamepadButton.CIRCLE) setRight(false);
+		else if (button === PUIGamepadButton.TRIANGLE) setUp(false);
+		else if (button === PUIGamepadButton.CROSS) setDown(false);
 	}
 
 	useEffect(() => {
@@ -59,7 +59,7 @@ export function PUIGamepadButtons(props: PropsWithChildren<PUIGamepadButtonsProp
 			<PUIGamepadButtonItem clicked={down}><Close/></PUIGamepadButtonItem>
 			<div/>
 		</div>
-		{<span>{props.label ?? "D-Pad"}</span>}
+		{props.label && <span>{props.label}</span>}
 	</PUICard>)
 
 }
